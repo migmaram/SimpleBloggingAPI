@@ -1,4 +1,7 @@
 
+using Microsoft.EntityFrameworkCore;
+using SimpleBloggingAPI.Data;
+
 namespace SimpleBloggingAPI
 {
     public class Program
@@ -13,6 +16,8 @@ namespace SimpleBloggingAPI
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddDbContext<ApiDbContext>(option => 
+            option.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SimpleBloggingAPI;Integrated Security=True;Encrypt=False;"));
 
             var app = builder.Build();
 
