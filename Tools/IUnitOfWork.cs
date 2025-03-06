@@ -10,8 +10,6 @@ namespace Tools
     public interface IUnitOfWork
     {
         public IRepository<Post> Posts { get; }
-        public IRepository<Category> Categories { get; }
-        public IRepository<Tag> Tags { get; }
         public void Save();
     }
 }
