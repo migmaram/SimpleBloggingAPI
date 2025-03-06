@@ -20,19 +20,19 @@ namespace Tools
             _context = context;
             _dbSet = _context.Set<TEntity>();
         }
-        public async void Add(TEntity data) => await _dbSet.AddAsync(data);
+        public void Add(TEntity data) =>  _dbSet.Add(data);
 
-        public async void Delete(int id)
+        public void Delete(int id)
         {
-            var toDelete = await _dbSet.FindAsync(id);
+            var toDelete = _dbSet.Find(id);
             _dbSet.Remove(toDelete);
         }
 
-        public async Task<IEnumerable<TEntity>> Get() => await _dbSet.ToListAsync();
+        public IEnumerable<TEntity> Get() => _dbSet.ToList();
 
-        public async Task<TEntity> Get(int id) => await _dbSet.FindAsync(id);
+        public TEntity Get(int id) =>  _dbSet.Find(id);
 
-        public async void Save() => await _context.SaveChangesAsync();
+        public void Save() =>  _context.SaveChanges();
 
 
         public void Update(TEntity data)

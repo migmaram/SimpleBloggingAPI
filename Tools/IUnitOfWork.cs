@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Tools
 {
-    internal interface IUnitOfWork
+    public interface IUnitOfWork
     {
         public IRepository<Post> Posts { get; }
         public IRepository<Category> Categories { get; }

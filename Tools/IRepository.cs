@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Tools
 {
-    internal interface IRepository<TEntity>
+    public interface IRepository<TEntity>
     {
-        Task<IEnumerable<TEntity>> Get();
-        Task<TEntity> Get(int id);
+        IEnumerable<TEntity> Get();
+        TEntity Get(int id);
         void Add(TEntity data);
         void Delete(int id);
         void Update(TEntity data);
