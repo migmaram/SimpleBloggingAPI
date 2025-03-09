@@ -19,7 +19,7 @@ namespace SimpleBloggingAPI
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddDbContext<ApiDbContext>(option => 
-            option.UseSqlServer(builder.Configuration.GetConnectionString("")));
+            option.UseSqlServer(builder.Configuration.GetConnectionString("BloggingDatabase")));
 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
