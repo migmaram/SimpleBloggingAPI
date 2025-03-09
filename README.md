@@ -4,13 +4,16 @@ This is a basic RESTful API built for personal blogging. It allows performing `C
 
 ### Installation
 
-1. Clone the repository: 
-2. Navigate to the project’s directory
-   ```
-   
-   cd ./SimpleBloggingAPI
-   
-   ``` 
+1. Clone the repository
+```
+
+https://github.com/migmaram/SimpleBloggingAPI.git
+```
+3. Navigate to the project’s directory
+```
+
+cd ./SimpleBloggingAPI
+``` 
 4. Open the project using Visual Studio or Visual Studio Code
 5. Set your database connection string in the `appsettings.json` file
 6. Run migrations (Make sure you have Entity Framework Core installed):
