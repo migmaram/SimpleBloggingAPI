@@ -13,8 +13,8 @@ namespace Tools
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        private ApiDbContext _context;
-        private DbSet<TEntity> _dbSet;
+        private readonly ApiDbContext _context;
+        private readonly DbSet<TEntity> _dbSet;
         public Repository(ApiDbContext context)
         {
             _context = context;
@@ -25,7 +25,8 @@ namespace Tools
         public void Delete(int id)
         {
             var toDelete = _dbSet.Find(id);
-            _dbSet.Remove(toDelete);
+            if (toDelete != null)
+                _dbSet.Remove(toDelete);            
         }
 
         public IEnumerable<TEntity> Get() => _dbSet.ToList();
@@ -33,7 +34,6 @@ namespace Tools
         public TEntity Get(int id) =>  _dbSet.Find(id);
 
         public void Save() =>  _context.SaveChanges();
-
 
         public void Update(TEntity data)
         {

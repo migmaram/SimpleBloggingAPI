@@ -26,6 +26,7 @@ namespace SimpleBloggingAPI.Controllers
 
             return Ok(post);
         }
+
         [HttpGet]
         public IActionResult Get(string? term)
         {
@@ -33,10 +34,10 @@ namespace SimpleBloggingAPI.Controllers
                 _unitOfWork.Posts.Get() :
                 _unitOfWork.Posts.Get()
                 .Where(p => 
-                p.Title.Contains(term) ||
-                p.Content.Contains(term) ||
-                p.Category.Contains(term) ||
-                p.Tags.Contains(term)
+                p.Title.Contains(term, StringComparison.CurrentCultureIgnoreCase) ||
+                p.Content.Contains(term, StringComparison.CurrentCultureIgnoreCase) ||
+                p.Category.Contains(term, StringComparison.CurrentCultureIgnoreCase) ||
+                p.Tags.Any(t => t.Equals(term, StringComparison.CurrentCultureIgnoreCase))
                 ).ToList();
 
             return Ok(posts);
@@ -47,6 +48,10 @@ namespace SimpleBloggingAPI.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest();
+
+            var today = DateTime.Now;
+            post.CreatedAt = today;
+            post.UpdatedAt = today;
 
             _unitOfWork.Posts.Add(post);
             _unitOfWork.Save();
@@ -82,6 +87,8 @@ namespace SimpleBloggingAPI.Controllers
                 return NotFound();
 
             _unitOfWork.Posts.Delete(id);
+            _unitOfWork.Save();
+
             return NoContent();
         }
     }
