@@ -77,4 +77,4 @@ The main goal of building this project was to practice:
 - Entity Framework, code first.
 - Dependency injecton, repository and unitOfWork desing patterns
 
-✨I took the idea, from the back end software development at: [https://roadmap.sh/projects/task-tracker](https://roadmap.sh/projects/blogging-platform-api)
+✨I took the idea from: [Developer Roadmaps - Blogging platform API project](https://roadmap.sh/projects/blogging-platform-api)
