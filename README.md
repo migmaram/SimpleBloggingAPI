@@ -15,11 +15,17 @@ https://github.com/migmaram/SimpleBloggingAPI.git
 cd ./SimpleBloggingAPI
 ``` 
 4. Open the project using Visual Studio or Visual Studio Code
-5. Set your database connection string in the `appsettings.json` file
-6. Run migrations (Make sure you have Entity Framework Core installed):
+5. Set your database connection string in the `appsettings.json` file.
+```
+
+"ConnectionStrings": {
+"BloggingDatabase" : "{your-database-connectio--string}"
+}
+```
+7. Run migrations (Make sure you have Entity Framework Core installed):
     - VS console: `Update-database`
     - VS Code console: `dotnet ef database update`
-7. Run the application
+8. Run the application
 
 ### Usage
 
